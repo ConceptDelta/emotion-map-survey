@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <h1>Emotion Map</h1>
+
+    <div>
+        <label for="participant-id">Participant ID:</label>
+        <input type="text" id="participant-id">
+    </div>
+
+    <div>
+        <label for="current-emotion">Current Emotion:</label>
+        <select id="current-emotion">
+            <option selected="selected">- - -</option>
+            <option>Anxiety</option>
+            <option>Boredom</option>
+            <option>Calmness</option>
+            <option>Confusion</option>
+            <option>Excitement</option>
+            <option>Frustration</option>
+            <option>Happiness</option>
+            <option>Sadness</option>
+            <option>Neutral</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="academic-activity">Academic Activity:</label>
+        <select id="academic-activity">
+            <option selected="selected">- - -</option>
+            <option>Assessment (beforehand)</option>
+            <option>Assessment (afterwards)</option>
+            <option>Homework</option>
+            <option>In Class (small section)</option>
+            <option>In Class (large lecture)</option>
+            <option>Studying</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="nonacademic-activity">Non-Academic Activity:</label>
+        <select id="nonacademic-activity">
+            <option selected="selected">- - -</option>
+            <option>Cleaning</option>
+            <option>Commuting</option>
+            <option>Eating</option>
+            <option>Exercising</option>
+            <option>Leisure Activities</option>
+            <option>Personal Care</option>
+            <option>Sleeping</option>
+            <option>Socializing</option>
+            <option>Working</option>
+        </select>
+    </div>
+
+    <div class="grid" id="color-grid">
+        <!-- Cells will be appended here via JavaScript -->
+    </div>
+    <button id="export-button">Export Data</button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
