@@ -18,34 +18,47 @@ lightnesses.forEach((lightness, rowIndex) => {
         }
         cell.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
         cell.addEventListener('click', function () {
+            const participantID = document.getElementById('participant-id').value;
+            const currentEmotion = document.getElementById('current-emotion').value;
+            
+            // Validate participant ID and current emotion
+            if (!participantID || currentEmotion === "-1" || currentEmotion.trim() === "") {
+                alert("Please enter a valid Participant ID and select a current emotion.");
+                return;
+            }
+            
             if (previouslySelectedCell) {
                 previouslySelectedCell.classList.remove('selected');
+                previouslySelectedCell.style.backgroundColor = previouslySelectedCell.getAttribute('data-original-color');
             }
-            this.classList.add('selected');
-            previouslySelectedCell = this;
+            
+            if (previouslySelectedCell !== this) {
+                this.classList.add('selected');
+                this.setAttribute('data-original-color', this.style.backgroundColor);
+                this.style.backgroundColor = 'lightgreen';
+                previouslySelectedCell = this;
 
-            const timestamp = new Date();
-            const currentEmotion = document.getElementById('current-emotion').value;
-            const academicActivity = document.getElementById('academic-activity').value;
-            const nonAcademicActivity = document.getElementById('nonacademic-activity').value;
-            selectionRecords.push({
-                "Valence (x)": columnValues[colIndex],
-                "Activation (y)": rowValues[rowIndex],
-                CurrentEmotion: currentEmotion,
-                AcademicActivity: academicActivity,
-                NonAcademicActivity: nonAcademicActivity,
-                timestamp: timestamp.toISOString()
-            });
+                const timestamp = new Date();
+                selectionRecords.push({
+                    "Valence (x)": columnValues[colIndex],
+                    "Activation (y)": rowValues[rowIndex],
+                    CurrentEmotion: currentEmotion,
+                    timestamp: timestamp.toISOString()
+                });
+            } else {
+                previouslySelectedCell = null;
+            }
         });
         grid.appendChild(cell);
     });
 });
+
 document.getElementById('export-button').addEventListener('click', function () {
     const participantID = document.getElementById('participant-id').value;
 
-    const csvContent = 'data:text/csv;charset=utf-8,'
-        + 'Participant ID,Valence (x),Activation (y),Current Emotion,Academic Activity,Non-Academic Activity,timestamp\r\n'
-        + selectionRecords.map(record => `${participantID},${record["Valence (x)"]},${record["Activation (y)"]},${record.CurrentEmotion},${record.AcademicActivity},${record.NonAcademicActivity},${record.timestamp}`).join('\r\n');
+    const csvContent = 'data:text/csv;charset=utf-8,' +
+        'Participant ID,Valence (x),Activation (y),Current Emotion,timestamp\r\n' +
+        selectionRecords.map(record => `${participantID},${record["Valence (x)"]},${record["Activation (y)"]},${record.CurrentEmotion},${record.timestamp}`).join('\r\n');
 
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
