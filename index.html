@@ -1,72 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Emotion Map</title>
 </head>
-
 <body>
-    <h1>Emotion Map</h1>
-
-    <div>
-        <label for="participant-id">Participant ID:</label>
-        <input type="text" id="participant-id">
+    <div class="container">
+        <div class="data-entry">
+            <div class="participant-id">
+                <label for="participant-id">Participant ID:</label>
+                <input type="text" id="participant-id">
+            </div>
+            <div class="dropdowns">
+                <div>
+                    <label for="current-emotion">Current Emotion:</label>
+                    <select id="current-emotion">
+                        <option value="-1">- - -</option>
+                        <option value="Anxiety">Anxiety</option>
+                        <option value="Boredom">Boredom</option>
+                        <option value="Calmness">Calmness</option>
+                        <option value="Confusion">Confusion</option>
+                        <option value="Excitement">Excitement</option>
+                        <option value="Frustration">Frustration</option>
+                        <option value="Happiness">Happiness</option>
+                        <option value="Sadness">Sadness</option>
+                        <option value=" "> </option>
+                        <option value="Neutral">Neutral</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="current-activity">Current Activity:</label>
+                    <select id="current-activity">
+                        <option value="-1">- - -</option>
+                        <option value="In Class - Small Section (No Assessment)">In Class - Small Section (No Assessment)</option>
+                        <option value="In Class - Small Section (Before Assessment)">In Class - Small Section (Before Assessment)</option>
+                        <option value="In Class - Small Section (After Assessment)">In Class - Small Section (After Assessment)</option>
+                        <option value=" "> </option>
+                        <option value="In Class - Large Lecture (No Assessment)">In Class - Large Lecture (No Assessment)</option>
+                        <option value="In Class - Large Lecture (Before Assessment)">In Class - Large Lecture (Before Assessment)</option>
+                        <option value="In Class - Large Lecture (After Assessment)">In Class - Large Lecture (After Assessment)</option>
+                        <option value=" "> </option>
+                        <option value="Outside Class - Homework (Low Difficulty Material)">Outside Class - Homework (Low Difficulty Material)</option>
+                        <option value="Outside Class - Homework (Medium Difficulty Material)">Outside Class - Homework (Medium Difficulty Material)</option>
+                        <option value="Outside Class - Homework (High Difficulty Material)">Outside Class - Homework (High Difficulty Material)</option>
+                        <option value=" "> </option>
+                        <option value="Outside Class - Studying (Low Difficulty Material)">Outside Class - Studying (Low Difficulty Material)</option>
+                        <option value="Outside Class - Studying (Medium Difficulty Material)">Outside Class - Studying (Medium Difficulty Material)</option>
+                        <option value="Outside Class - Studying (High Difficulty Material)">Outside Class - Studying (High Difficulty Material)</option>
+                        <option value=" ">-------------------------------------------------------------</option>
+                        <option value="Cleaning">Cleaning</option>
+                        <option value="Commuting">Commuting</option>
+                        <option value="Eating">Eating</option>
+                        <option value="Exercising">Exercising</option>
+                        <option value="Leisure Activities">Leisure Activities</option>
+                        <option value="Personal Care">Personal Care</option>
+                        <option value="Resting">Resting</option>
+                        <option value="Socializing">Socializing</option>
+                        <option value="Working">Working</option>
+                        <option value=" ">-------------------------------------------------------------</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="grid-container">
+            <div id="unpleasant" class="side-label">Unpleasant</div>
+            <div class="grid-labels">
+                <div id="high-energy" class="top-label">High Energy</div>
+                <div id="color-grid"></div>
+                <div id="low-energy" class="bottom-label">Low Energy</div>
+            </div>
+            <div id="pleasant" class="side-label">Pleasant</div>
+        </div>
+        <hr>
+        <div class="export-button-container">
+            <button id="export-button">Export Data</button>
+        </div>
     </div>
-
-    <div>
-        <label for="current-emotion">Current Emotion:</label>
-        <select id="current-emotion">
-            <option selected="selected">- - -</option>
-            <option>Anxiety</option>
-            <option>Boredom</option>
-            <option>Calmness</option>
-            <option>Confusion</option>
-            <option>Excitement</option>
-            <option>Frustration</option>
-            <option>Happiness</option>
-            <option>Sadness</option>
-            <option>Neutral</option>
-        </select>
-    </div>
-
-    <div>
-        <label for="academic-activity">Academic Activity:</label>
-        <select id="academic-activity">
-            <option selected="selected">- - -</option>
-            <option>Assessment (beforehand)</option>
-            <option>Assessment (afterwards)</option>
-            <option>Homework</option>
-            <option>In Class (small section)</option>
-            <option>In Class (large lecture)</option>
-            <option>Studying</option>
-        </select>
-    </div>
-
-    <div>
-        <label for="nonacademic-activity">Non-Academic Activity:</label>
-        <select id="nonacademic-activity">
-            <option selected="selected">- - -</option>
-            <option>Cleaning</option>
-            <option>Commuting</option>
-            <option>Eating</option>
-            <option>Exercising</option>
-            <option>Leisure Activities</option>
-            <option>Personal Care</option>
-            <option>Sleeping</option>
-            <option>Socializing</option>
-            <option>Working</option>
-        </select>
-    </div>
-
-    <div class="grid" id="color-grid">
-        <!-- Cells will be appended here via JavaScript -->
-    </div>
-    <button id="export-button">Export Data</button>
-
     <script src="script.js"></script>
 </body>
-
 </html>
